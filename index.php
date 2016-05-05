@@ -1,5 +1,7 @@
 <?php
 include "conectar_banco.php";
+include("seguranca.php");
+protegePagina();
 ?>
 <!DOCTYPE HTML>
 <html lang="pt-br">
@@ -11,6 +13,7 @@ include "conectar_banco.php";
 <body>
 
 <a href="montar_pedido.php" class="button button-primary">Realizar pedido</a>
+<a href="valida_permissao.php" class="button">Cadastrar Franqueado</a>
 
 </body>
 </html>

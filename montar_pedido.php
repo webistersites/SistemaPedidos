@@ -2,7 +2,18 @@
 include "conectar_banco.php";
 include("seguranca.php"); // Inclui o arquivo com o sistema de segurança
 protegePagina(); // Chama a função que protege a página
-$query = mysql_query("SELECT id_pedido,descricao,quantidade FROM pedido");
+$criarTabela = "CREATE TABLE IF NOT exists `pedido_".$_SESSION['usuarioNome']."` (
+  `id_pedido` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `numero_pedido` int(12) unsigned NOT NULL,
+  `produtos_id_produto` int(10) unsigned NOT NULL,
+  `descricao` varchar(200) NOT NULL,
+  `quantidade` int(10) unsigned NOT NULL,
+  `usuario` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_pedido`),
+  KEY `pedido_FKIndex1` (`produtos_id_produto`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+$result = mysql_query($criarTabela);
+$query = mysql_query("SELECT id_pedido,descricao,quantidade FROM pedido_".$_SESSION['usuarioNome']);
 
 ?>
 <!DOCTYPE HTML>
@@ -14,7 +25,9 @@ $query = mysql_query("SELECT id_pedido,descricao,quantidade FROM pedido");
 </head>
 <body>
 	<?php
-	echo "Olá, " . $_SESSION['usuarioNome'] . " &nbsp;&nbsp;&nbsp;<a href='logout.php'>sair</a>";
+	echo "Olá, " . $_SESSION['usuarioNome'] . " &nbsp;&nbsp;&nbsp;<a href='logout.php'>sair</a><br>";
+	echo "<a href='index.php'>Voltar</a>";
+
 ?>
 	<div class="container">
 <table cellspacing="40">
