@@ -2,6 +2,13 @@
 include "conectar_banco.php";
 include("seguranca.php");
 protegePagina();
+$sql = mysql_query("SELECT permissao FROM usuarios where id = " . $_SESSION['usuarioID']);
+$resultado = mysql_fetch_assoc($sql);
+
+if ($resultado['permissao'] == 0) {
+header("Location: ult_ped.php");
+}
+
 ?>
 <!DOCTYPE HTML>
 <html lang="pt-br">

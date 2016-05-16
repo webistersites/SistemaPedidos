@@ -2,6 +2,7 @@
 <?php
 // Inclui o arquivo com o sistema de segurança
 require_once("seguranca.php");
+
 // Verifica se um formulário foi enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // Salva duas variáveis com o que foi digitado no formulário
