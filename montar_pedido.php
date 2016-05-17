@@ -39,8 +39,17 @@ $query = mysql_query("SELECT id_pedido,descricao,quantidade FROM pedido_".$_SESS
 		 	<td><label for="descricao">Selecione um produto</label>
 			 	<select name="produto">
 			 		<option>Selecione...</option>
-			 		<option value="Barra ao leite 100 gr">Barra ao leite 100 gr</option>
-			 		<option value="Barra meio amargo 100 gr">Barra meio amargo 100 gr</option>
+			 		<?php
+			 		$produtos = mysql_query("SELECT * FROM produtos");
+			 		while ($lista=mysql_fetch_array($produtos)) {
+
+						echo "<option value='".$lista['descricao']."'>" . $lista['descricao'] . "</option>";
+					}
+
+			 		?>	
+
+			 		<!-- <option value="Barra ao leite 100 gr">Barra ao leite 100 gr</option>
+			 		<option value="Barra meio amargo 100 gr">Barra meio amargo 100 gr</option> -->
 				</select></td>
 		 	<td>
 		 		<label for="">Quantidade</label>
@@ -84,6 +93,7 @@ while($ver=mysql_fetch_array($query)){
 </td>
 </tr>
 </table>
+
 
 <a href="deletar_pedido.php" class="button">Limpar Lista</a>
 <a href="enviar_pedido.php" class="button button-primary">Finalizar pedido</a>

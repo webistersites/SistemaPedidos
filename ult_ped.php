@@ -17,7 +17,7 @@ $query = mysql_query("SELECT max(numero_pedido) as pedido,descricao,quantidade F
 <body>
 
 <h3><?php echo "Olá " . $_SESSION['usuarioNome']; ?>, este foi seu último pedido </h3>
-<a href="montar_pedido.php" class="button">Realizar Pedido</a>
+<a href="montar_pedido.php" class="button">Novo Pedido</a>
 <table width=400px>
 	<tr>
 		<th>N° Pedido</th>
