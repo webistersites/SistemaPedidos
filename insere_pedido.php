@@ -8,7 +8,10 @@ $quantidade = $_POST['qtd'];
 $buscaID = mysql_query("SELECT max(numero_pedido) FROM pedido WHERE usuario = '" . $_SESSION['usuarioNome'] . "'");
 $somaId = mysql_result($buscaID,0) + 1;
 
-$sql = "insert into pedido_" . $_SESSION['usuarioNome'] . " values('',".$somaId.",'','$prod','$quantidade','" . $_SESSION['usuarioNome'] . "')";
+$idProduto = mysql_query("SELECT id_produto FROM produtos WHERE descricao = '".$prod."'");
+$idProd = mysql_result($idProduto, 0);
+
+$sql = "insert into pedido_" . $_SESSION['usuarioNome'] . " values('',".$somaId.",$idProd,'$prod','$quantidade','" . $_SESSION['usuarioNome'] . "')";
 
 $resultado = mysql_query($sql);
 echo "Adicionado ao pedido";

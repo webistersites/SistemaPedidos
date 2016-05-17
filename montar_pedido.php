@@ -12,8 +12,19 @@ $criarTabela = "CREATE TABLE IF NOT exists `pedido_".$_SESSION['usuarioNome']."`
   PRIMARY KEY (`id_pedido`),
   KEY `pedido_FKIndex1` (`produtos_id_produto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
+
 $result = mysql_query($criarTabela);
-$query = mysql_query("SELECT id_pedido,descricao,quantidade FROM pedido_".$_SESSION['usuarioNome']);
+
+$query = mysql_query("select a.id_pedido,
+a.descricao,
+a.quantidade,
+b.valor_venda,
+b.valor_venda*a.quantidade as TOTAL
+FROM pedido_".$_SESSION['usuarioNome']." a
+INNER JOIN
+	produtos b
+ON
+	a.produtos_id_produto = b.id_produto");
 
 ?>
 <!DOCTYPE HTML>
@@ -75,6 +86,8 @@ $query = mysql_query("SELECT id_pedido,descricao,quantidade FROM pedido_".$_SESS
 		<th>ID</th>
 		<th>Nome</th>
 		<th>Quantidade</th>
+		<th>Valor Venda</th>
+		<th>TOTAL</th>
 		<th>Deletar</th>
 	</tr>
 
@@ -85,6 +98,8 @@ while($ver=mysql_fetch_array($query)){
     echo "<td>".$ver['id_pedido']."</td>";
     echo "<td>".$ver['descricao']."</td>";
     echo "<td>".$ver['quantidade']."</td>";
+    echo "<td>".$ver['valor_venda']."</td>";
+    echo "<td>".$ver['TOTAL']."</td>";
     echo "<td><a href='deletar.php?id=".$ver['id_pedido']."'>Excluir</a></td>";
     echo "</tr>";
 }
