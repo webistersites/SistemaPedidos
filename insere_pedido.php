@@ -14,11 +14,14 @@ $idProd = mysql_result($idProduto, 0);
 $sql = "insert into pedido_" . $_SESSION['usuarioNome'] . " values('',".$somaId.",$idProd,'$prod','$quantidade','" . $_SESSION['usuarioNome'] . "')";
 
 $resultado = mysql_query($sql);
+
+$foiPedido = mysql_query("UPDATE produtos_".$_SESSION['usuarioNome']." SET foi_pedido = 1 WHERE id_produto = ".$idProd);
+
 echo "Adicionado ao pedido";
 
 mysql_close($conexao);
 
 ?>
 
-<meta http-equiv="refresh" content="0.5;url=montar_pedido.php">
+<meta http-equiv="refresh" content="1;url=montar_pedido.php">
 

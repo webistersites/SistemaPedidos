@@ -13,6 +13,8 @@ $criarTabela = "CREATE TABLE IF NOT exists `pedido_".$_SESSION['usuarioNome']."`
   KEY `pedido_FKIndex1` (`produtos_id_produto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;";
 
+$criarTabela2 = mysql_query("CREATE TABLE produtos_".$_SESSION['usuarioNome']." AS SELECT * FROM produtos;");
+
 $result = mysql_query($criarTabela);
 
 $query = mysql_query("select a.id_pedido,
@@ -40,7 +42,7 @@ ON
 	echo "<a href='index.php'>Voltar</a>";
 
 ?>
-	<div class="container">
+
 <table cellspacing="40">
 	<tr>
 		<td>
@@ -51,7 +53,7 @@ ON
 			 	<select name="produto">
 			 		<option>Selecione...</option>
 			 		<?php
-			 		$produtos = mysql_query("SELECT * FROM produtos");
+			 		$produtos = mysql_query("SELECT * FROM produtos_".$_SESSION['usuarioNome']." WHERE foi_pedido = 0");
 			 		while ($lista=mysql_fetch_array($produtos)) {
 
 						echo "<option value='".$lista['descricao']."'>" . $lista['descricao'] . "</option>";
@@ -113,7 +115,6 @@ while($ver=mysql_fetch_array($query)){
 <a href="deletar_pedido.php" class="button">Limpar Lista</a>
 <a href="enviar_pedido.php" class="button button-primary">Finalizar pedido</a>
 
-</div>
 
 </body>
 </html>

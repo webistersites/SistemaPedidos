@@ -34,6 +34,7 @@ $header .= "Content-Type: text/html; charset=iso-8859-1\r\n";
 $passarDados = mysql_query("INSERT INTO pedido (numero_pedido,descricao,quantidade,usuario) SELECT numero_pedido,descricao, quantidade, usuario FROM pedido_" . $_SESSION['usuarioNome']);
 
 $droparTabela = mysql_query("drop table pedido_" . $_SESSION['usuarioNome']);
+$droparTabela2 = mysql_query("drop table produtos_".$_SESSION['usuarioNome']);
 
 ?>
 
