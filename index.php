@@ -13,18 +13,28 @@ header("Location: ult_ped.php");
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-	<link rel="stylesheet" href="css/skeleton.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" href="css/skeleton.css">-->
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
 	<title>Inicio | ChocolateriaBrasileira</title>
 </head>
-<body>
-<?php
-	echo "Olá, " . $_SESSION['usuarioNome'] . " &nbsp;&nbsp;&nbsp;<a href='logout.php'>sair</a><br>";
-?>
+<body id="body">
+<div class="interface">
 
-<a href="montar_pedido.php" class="button button-primary">Realizar pedido</a>
-<a href="valida_permissao.php" class="button">Cadastrar Franqueado</a>
-<a href="cadastro_prod.php" class="button">Cadastrar Produto</a>
+    <div id="greetings">
+    <?php
+        echo "Olá " . $_SESSION['usuarioNome'] . ", &nbsp;&nbsp;<a href='logout.php'>sair</a><br>";
+    ?>
+    </div>
 
+    <!--
+    <a href="valida_permissao.php" class="button">Cadastrar Franqueado</a>
+    <a href="cadastro_prod.php" class="button">Cadastrar Produto</a>
+    -->
+
+
+</div> <!-- Fechamento da DIV 'Interface'  -->
 </body>
 </html>

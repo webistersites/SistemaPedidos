@@ -10,16 +10,34 @@ include "conectar_banco.php";
 </head>
 <body>
 
+<div class="layout">
+    <div id="login">
+        <table border="0" align="center" cellspacing="15px">
+            <tr>
+                <td>
+                    <form method="post" action="valida.php">
+                        <label>Usuário</label>
+                        <input type="text" name="usuario" maxlength="50" />
 
-<form method="post" action="valida.php">
-  <label>Usuário</label>
-  <input type="text" name="usuario" maxlength="50" />
-  
-  <label>Senha</label>
-  <input type="password" name="senha" maxlength="50" />
-  
-  <input type="submit" value="Entrar" />
-</form>
+                        <label>Senha</label>
+                        <input type="password" name="senha" maxlength="50" />
+                        <br>
+                        <input type="submit" value="Entrar" class="button-primary"/>
+                    </form>
+                </td>
+                <td valign="top">
+                    <img src="_img/logo_final_2016_peq.png">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="copyr">
+                    <h3>Powered by Webister© | 2016</h3>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
 
 </body>
 </html>
