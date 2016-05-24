@@ -22,6 +22,12 @@ body {
 
 #body {
     background-color: #431F13;
+    margin: 0;
+    font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+    line-height: 1.6;
+    font-weight: 400;
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #222;
 }
 
 article,
@@ -74,6 +80,7 @@ dfn {
 h1 {
   margin: .67em 0;
   font-size: 2em;
+    text-align: center;
 }
 mark {
   color: #000;
@@ -6801,7 +6808,8 @@ button.close {
 .interface {
     width: 85%;
     margin: auto;
-    background-color: #e1e1e1;
+    background-color: #eee;
+    padding: 0 80px 5px 80px;
 }
 
 #greetings {
@@ -6809,3 +6817,8 @@ button.close {
     padding: 10px;
 }
 
+.box-chart {
+    width: 50%;
+    margin: 0 auto;
+    padding: 10px;
+}

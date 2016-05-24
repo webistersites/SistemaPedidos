@@ -1,0 +1,113 @@
+body { background: url(../img/bg.png) #f1f1f1; font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; font-size: 100%; }
+* { -webkit-transition: all 0.3s linear; -moz-transition: all 0.3s linear; -o-transition: all 0.3s linear; transition: all 0.3s linear }
+
+/* Estilos para celulares de no máximo 176 x 220
+========================================================================== */
+@media all and (max-width: 319px) {
+    .pagina { overflow: hidden; padding: 0 !important; margin-bottom: 10px !important; width: 100% }
+    h1 { font-size: 1em !important }
+    h2 { font-size: .8em !important }
+    h1, h2, .atalho { margin: 0 10px 5px !important }
+    p { font-size: .8em; margin: 0 10px 10px 10px }
+    .testado { font-size: .8em }
+    .menu { height: auto !important }
+    .menu .js { display: none }
+    .menu .js li { border: 0 none !important; float: none; max-width: none; width: auto }
+    .menu .js > li a { padding: 5px }
+    .menu .js li ul { display: block; margin-bottom: 10px; opacity: 1; position: inherit; visibility: visible }
+    .menu .js li ul li a { border: 0 none; font-size: 0.8em; margin-left: 5px; padding: 5px }
+    footer { clear: both; position: inherit !important; padding: 1px 0 !important }
+}
+
+
+/* Estilos para celulares principais - 320 x 568
+========================================================================== */
+@media all and (min-width: 320px) and (max-width: 532px) {
+    .pagina { overflow: hidden; padding: 0 !important; margin-bottom: 10px !important; width: 100% }
+    h1 { font-size: 1em !important }
+    h2 { font-size: .9em !important }
+    h1, h2, .atalho { margin: 0 10px 5px !important }
+    p { font-size: .9em; margin: 0 10px 10px 10px }
+    .testado { font-size: .9em }
+    .menu { height: auto !important }
+    .menu .js { display: none }
+    .menu .js li { border: 0 none !important; float: none; max-width: none; width: auto }
+    .menu .js > li a { padding: 5px }
+    .menu .js li ul { display: block; margin-bottom: 10px; opacity: 1; position: inherit; visibility: visible }
+    .menu .js li ul li a { border: 0 none; font-size: 0.8em; margin-left: 5px; padding: 5px }
+    footer { clear: both; position: inherit !important; padding: 1px 0 !important }
+}
+
+
+/* Estilos para tablet de no mínimo 533 x 853
+========================================================================== */
+@media all and (min-width: 533px) and (max-width: 800px) {
+    .pagina { padding: 0 !important; width: 100% }
+    h1, h2, .menu { margin-left: 10px !important; margin-right: 10px !important }
+    p { margin: 0 10px 10px 10px }
+    .menu { font-size: 0.78em !important }
+    .menu .atalho { display: none }
+    .menu ul > li { width: auto !important }
+    .menu ul > li ul { width: auto !important }
+    .menu ul > li li a { padding: 5px !important }
+}
+
+
+/* Estilos para desktop/notebook a partir de 801 x n
+========================================================================== */
+@media all and (min-width: 801px) {
+    .pagina { margin: 0 auto; width: 980px }
+    .menu .atalho { display: none }
+    .menu ul > li { width: 14.1% }
+}
+
+/* Estilos gerais
+========================================================================== */
+
+/*.pagina { padding: 0 10px; margin: 10px auto 0 }*/
+
+footer { background-color: #000000; bottom: 0; color: #FFFFFF; font-size: 0.8em; position: absolute; width: 100% }
+footer p { text-align: center; margin: 5px 0 }
+footer a { color: #FFFFFF }
+footer a:hover { color: #CCF }
+
+h1 { font-size: 1.3em; margin-top: 0 }
+h2 { font-size: 1em; margin-top: 0 }
+p { clear: left; margin-bottom: 10px }
+
+.atalho { background-color: #FFF; border: 1px solid #DCDCDC; cursor: pointer; float: left; padding: 2px 5px; margin-bottom: 5px }
+
+/* MENU */
+.menu { display: block; font-size: 1em; height: 43px; width: 100%; margin-bottom: 40px; margin-left: 8%; position: relative; }
+.menu ul  { clear: both; list-style: none; margin: 0; padding: 0; z-index: 1000 }
+.menu ul > li { border-color: #DCDCDC; border-style: solid; border-width: 1px 1px 0 0; float: left; position: relative; max-width: 19% }
+.menu ul > li:first-child { border-left: 1px solid #DCDCDC }
+.menu ul > li a { background-color: #FFF; border-bottom: 2px solid #DCDCDC; color: #000; display: block; font-weight: bold; padding: 10px; text-decoration: none; position: relative;}
+.menu ul > li a:hover { color: #333 }
+.menu ul > li ul { background-color: #FFF; display: none; position: absolute; visibility: hidden; vertical-align: middle; padding: 0; opacity: 0; min-width: 100%; max-width: auto; filter: alpha(opacity=0) }
+.menu ul > li:hover ul { display: block; visibility: visible; opacity: 1.0; filter: alpha(opacity=100);}
+.menu ul > li li { border-width: 0 1px; float: none; left: -1px; margin: 0; position: relative; white-space: nowrap; width: auto; min-width: 100% !important }
+.menu ul > li li a { border-bottom: 1px solid #DCDCDC; color: #8B8B8B; display: block; padding: 10px 15px; text-decoration: none }
+.menu ul > li li a:hover { color: #FFFFFF }
+.menu ul > li li ul { left: 100%; top: -1px }
+
+.menu .amarelo > a { border-bottom: 3px solid #D9AD42 }
+.menu .amarelo li a:hover { background-color: #D9AD42 }
+
+.menu .azul-claro > a { border-bottom: 2px solid #a3b8cb }
+.menu .azul-claro li a:hover { background-color: #a3b8cb }
+
+.menu .azul-escuro > a { border-bottom: 2px solid #2a6c9f }
+.menu .azul-escuro li a:hover { background-color: #2a6c9f }
+
+.menu .verde > a { border-bottom: 2px solid #bdd06d }
+.menu .verde li a:hover { background-color: #bdd06d }
+
+.menu .verde-escuro > a { border-bottom: 2px solid #72ba2e }
+.menu .verde-escuro li a:hover { background-color: #72ba2e }
+
+.menu .vermelho > a { border-bottom: 2px solid #cd2824 }
+.menu .vermelho li a:hover { background-color: #cd2824 }
+
+.menu .roxo > a { border-bottom: 2px solid #522c7f }
+.menu .roxo li a:hover { background-color: #522c7f }
