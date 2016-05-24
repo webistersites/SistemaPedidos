@@ -2,19 +2,19 @@
     <nav class="menu">
         <ul>
             <li class="amarelo">
-                <a href="#">Início</a>
+                <a href="index.php">Início</a>
             </li>
             <li class="amarelo">
                 <a href="#">Produtos</a>
                 <ul>
-                    <li><a href="#">Adicionar</a></li>
+                    <li><a href="cadastro_prod.php">Adicionar</a></li>
                     <li><a href="#">Visualizar</a></li>
                 </ul>
             </li>
             <li class="amarelo">
                 <a href="#">Pedidos</a>
                 <ul>
-                    <li><a href="#">Novo</a></li>
+                    <li><a href="montar_pedido.php">Novo</a></li>
                     <li><a href="#">Histórico</a></li>
                 </ul>
             </li>

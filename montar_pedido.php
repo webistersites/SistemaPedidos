@@ -32,65 +32,70 @@ ON
 <!DOCTYPE HTML>
 <html lang="pt-br">
 <head>
-	<link rel="stylesheet" href="css/skeleton.css">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js'></script>
+    <link rel="stylesheet" href="bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/estilo-menu.css">
 	<title>Pedido | ChocolateriaBrasileira</title>
 </head>
-<body>
+<body id="body">
+<div class="interface">
 	<?php
-	echo "Olá, " . $_SESSION['usuarioNome'] . " &nbsp;&nbsp;&nbsp;<a href='logout.php'>sair</a><br>";
-	echo "<a href='index.php'>Voltar</a>";
+        require "menu.php";
+    ?>
 
-?>
+		<form class="form-inline" name="produto" method="post" action="insere_pedido.php">
+                <div class="form-group">
+                    <label for="descricao" class="control-label col-sm-2">Selecione</label>
+                    <div class="col-sm-1">
+                        <select name="produto" class="form-control dropdown">
+                            <option>Selecione...</option>
+                                <?php
+                                $produtos = mysql_query("SELECT * FROM produtos_".$_SESSION['usuarioNome']." WHERE foi_pedido = 0");
+                                while ($lista=mysql_fetch_array($produtos)) {
 
-<table cellspacing="40">
-	<tr>
-		<td>
-<table>
-	<tr>
-		<form name="produto" method="post" action="insere_pedido.php">
-		 	<td><label for="descricao">Selecione um produto</label>
-			 	<select name="produto">
-			 		<option>Selecione...</option>
-			 		<?php
-			 		$produtos = mysql_query("SELECT * FROM produtos_".$_SESSION['usuarioNome']." WHERE foi_pedido = 0");
-			 		while ($lista=mysql_fetch_array($produtos)) {
+                                echo "<option value='".$lista['descricao']."'>" . $lista['descricao'] . "</option>";
+                                }
 
-						echo "<option value='".$lista['descricao']."'>" . $lista['descricao'] . "</option>";
-					}
+                                ?>
 
-			 		?>	
-
-			 		<!-- <option value="Barra ao leite 100 gr">Barra ao leite 100 gr</option>
-			 		<option value="Barra meio amargo 100 gr">Barra meio amargo 100 gr</option> -->
-				</select></td>
-		 	<td>
-		 		<label for="">Quantidade</label>
-		 		<input class="u-full-width" type="text" placeholder="" id="qtd_input" name="qtd" size="1">
-		 	</td>
-		 	<td>
-		 		<label>.</label>
-		 		<input type="submit" name="submit" value="Selecionar" />
-		 	</td>
+                            <!-- <option value="Barra ao leite 100 gr">Barra ao leite 100 gr</option>
+                            <option value="Barra meio amargo 100 gr">Barra meio amargo 100 gr</option> -->
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+		 		    <label for="" class="control-label col-sm-6">Quantidade</label>
+                    <div class="col-sm-1">
+                        <input class="form-control" type="text" placeholder="" id="qtd_input" name="qtd" size="1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submit" class="btn btn-info">Selecionar</button>
+                </div>
 		 </form>
-	</tr>
- </table>
-</td>
+
+    <div id="divisor">
+
+    </div>
 
 <!-- *******************************
 **~ ÁREA DE EXIBIÇÃO DOS PEDIDOS ~**
 ************************************ -->
-<td>
-<h3>Pedido</h3>
 
-<table width=400px>
+    <br><br>
+<h1>Pedido</h1>
+
+<table class="table table-bordered table-striped table-hover">
 	<tr>
 		<th>ID</th>
 		<th>Nome</th>
 		<th>Quantidade</th>
 		<th>Valor Venda</th>
 		<th>TOTAL</th>
-		<th>Deletar</th>
+		<th>Ação</th>
 	</tr>
 
 <?php
@@ -102,19 +107,15 @@ while($ver=mysql_fetch_array($query)){
     echo "<td>".$ver['quantidade']."</td>";
     echo "<td>".$ver['valor_venda']."</td>";
     echo "<td>".$ver['TOTAL']."</td>";
-    echo "<td><a href='deletar.php?id=".$ver['id_pedido']."'>Excluir</a></td>";
+    echo "<td><a class='btn btn-danger btn-xs' href='deletar.php?id=".$ver['id_pedido']."'>Excluir</a></td>";
     echo "</tr>";
 }
 ?>
 </table>
-</td>
-</tr>
-</table>
 
+<a href="deletar_pedido.php" class="btn btn-default">Limpar Lista</a>
+<a href="enviar_pedido.php" class="btn btn-success">Finalizar pedido</a>
 
-<a href="deletar_pedido.php" class="button">Limpar Lista</a>
-<a href="enviar_pedido.php" class="button button-primary">Finalizar pedido</a>
-
-
+</div>
 </body>
 </html>

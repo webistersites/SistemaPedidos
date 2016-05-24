@@ -45,7 +45,7 @@ header("Location: ult_ped.php");
         <div class="panel-heading"><span class="glyphicon glyphicon-th-list"></span> Últimos Pedidos</div>
 
         <!-- Table -->
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover table-striped">
             <tr>
                 <th>Nº Pedido</th>
                 <th>Usuário</th>
@@ -59,17 +59,20 @@ order by id_pedido desc limit 5;");
                 echo "<tr>";
                 echo "<td>".$ver['numero_pedido']."</td>";
                 echo "<td>".$ver['usuario']."</td>";
-                echo "<td><a href='#' class='btn btn-success'>Visualizar Pedido</a></td>";
+                echo "<td><a href='#' class='btn btn-primary btn-xs'>Visualizar Pedido</a></td>";
                 echo "</tr>";
             }
             ?>
         </table>
     </div>
-    <div class="panel-primary">
-        <div class="panel-heading"><span class="glyphicon glyphicon-th-list"></span> Gráficos</div>
-
-            <div class="box-chart">
-            <canvas id="GraficoDonut" style="width:100%;"></canvas>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list"></span> Gráficos
+        </div>
+        <br>
+        <div class="box-chart">
+            <h2>Pedidos x Mês</h2>
+            <canvas id="GraficoLine" style="width:100%;"></canvas>
 
             <script type="text/javascript">
 
@@ -77,35 +80,100 @@ order by id_pedido desc limit 5;");
                     responsive:true
                 };
 
-                var data = [
-                    {
-                        value: randomnb(),
-                        color:"#F7464A",
-                        highlight: "#FF5A5E",
-                        label: "Vermelho"
-                    },
-                    {
-                        value: randomnb(),
-                        color: "#46BFBD",
-                        highlight: "#5AD3D1",
-                        label: "Azul"
-                    },
-                    {
-                        value: 15,
-                        color: "#FDB45C",
-                        highlight: "#FFC870",
-                        label: "Amarelo"
-                    }
-                ]
+                var data = {
+                    labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+                    datasets: [
+                        {
+                            label: "Dados primários",
+                            fillColor: "rgba(220,220,220,0.2)",
+                            strokeColor: "rgba(220,220,220,1)",
+                            pointColor: "rgba(220,220,220,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb(), randomnb()]
+                        },
+                        {
+                            label: "Dados secundários",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: [28, 48, 40, 19, 86, 27, 90, 200, 87, 20, 50, 20]
+                        }
+                    ]
+                };
 
                 window.onload = function(){
 
-                    var ctx = document.getElementById("GraficoDonut").getContext("2d");
-                    var PizzaChart = new Chart(ctx).Doughnut(data, options);
+                    var ctx = document.getElementById("GraficoLine").getContext("2d");
+                    var LineChart = new Chart(ctx).Line(data, options);
                 }
-            </script>
+            </script> <!-- Gráfico -->
 
-            </div>
+        </div>
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list"></span> Produtos mais Pedidos
+        </div>
+        <table class="table table-striped">
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+            </tr>
+            <?php
+            $query2 = mysql_query("select distinct descricao, sum(quantidade) as Total from pedido
+group by descricao
+order by 2 desc;");
+            while($ver=mysql_fetch_array($query2)){
+
+                echo "<tr>";
+                echo "<td>".$ver['descricao']."</td>";
+                echo "<td>".$ver['Total']."</td>";
+                echo "</tr>";
+            }
+
+            ?>
+        </table>
+        <!-- <canvas id="GraficoDonut" style="width:100%;"></canvas>
+
+        <script type="text/javascript">
+            var dados = new Array();
+            dados = "<? echo $ver['Total']; ?>";
+            var options = {
+                responsive:true
+            };
+
+            var data = [
+                {
+                    value: randomnb(),
+                    color:"#F7464A",
+                    highlight: "#FF5A5E",
+                    label: "Vermelho"
+                },
+                {
+                    value: randomnb(),
+                    color: "#46BFBD",
+                    highlight: "#5AD3D1",
+                    label: "Azul"
+                },
+                {
+                    value: 15,
+                    color: "#FDB45C",
+                    highlight: "#FFC870",
+                    label: "Amarelo"
+                }
+            ]
+
+            window.onload = function(){
+
+                var ctx = document.getElementById("GraficoDonut").getContext("2d");
+                var PizzaChart = new Chart(ctx).Doughnut(data, options);
+            }
+        </script>-->
     </div>
 
 

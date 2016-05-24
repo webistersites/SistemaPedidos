@@ -88,11 +88,11 @@ p { clear: left; margin-bottom: 10px }
 .menu ul > li:hover ul { display: block; visibility: visible; opacity: 1.0; filter: alpha(opacity=100);}
 .menu ul > li li { border-width: 0 1px; float: none; left: -1px; margin: 0; position: relative; white-space: nowrap; width: auto; min-width: 100% !important }
 .menu ul > li li a { border-bottom: 1px solid #DCDCDC; color: #8B8B8B; display: block; padding: 10px 15px; text-decoration: none }
-.menu ul > li li a:hover { color: #FFFFFF }
+.menu ul > li li a:hover { color: #FFF }
 .menu ul > li li ul { left: 100%; top: -1px }
 
-.menu .amarelo > a { border-bottom: 3px solid #D9AD42 }
-.menu .amarelo li a:hover { background-color: #D9AD42 }
+.menu .amarelo > a { border-bottom: 3px solid #21864A }
+.menu .amarelo li a:hover { background-color: #21864A }
 
 .menu .azul-claro > a { border-bottom: 2px solid #a3b8cb }
 .menu .azul-claro li a:hover { background-color: #a3b8cb }

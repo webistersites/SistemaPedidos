@@ -17,11 +17,11 @@ body {
     font-weight: 400;
     font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #222;
-    background-color: #444444;
+    background-color: #431F13;
 }
 
 #body {
-    background-color: #431F13;
+    background-color: #53301D;
     margin: 0;
     font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
     line-height: 1.6;
@@ -256,6 +256,7 @@ th {
   h2,
   h3 {
     page-break-after: avoid;
+
   }
   .navbar {
     display: none;
@@ -3137,8 +3138,8 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #2e6da4;
+  background-color: #D9AD42;
+  border-color: #D9AD42;
 }
 .btn-primary:focus,
 .btn-primary.focus {
@@ -3148,8 +3149,8 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary:hover {
   color: #fff;
-  background-color: #286090;
-  border-color: #204d74;
+  background-color: #A68432;
+  border-color: #A68432;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -5723,18 +5724,18 @@ button.list-group-item-danger.active:focus {
   border-bottom-color: #ddd;
 }
 .panel-primary {
-  border-color: #337ab7;
+  border-color: #21864A;
 }
 .panel-primary > .panel-heading {
   color: #fff;
-  background-color: #337ab7;
-  border-color: #337ab7;
+  background-color: #21864A;
+  border-color: #21864A;
 }
 .panel-primary > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #337ab7;
+  border-top-color: #21864A;
 }
 .panel-primary > .panel-heading .badge {
-  color: #337ab7;
+  color: #856F46;
   background-color: #fff;
 }
 .panel-primary > .panel-footer + .panel-collapse > .panel-body {
@@ -6808,8 +6809,9 @@ button.close {
 .interface {
     width: 85%;
     margin: auto;
-    background-color: #eee;
+    background-color: #EEE;
     padding: 0 80px 5px 80px;
+    box-shadow: #000 -4px 4px 30px;
 }
 
 #greetings {
@@ -6818,7 +6820,16 @@ button.close {
 }
 
 .box-chart {
-    width: 50%;
+    width: 60%;
     margin: 0 auto;
     padding: 10px;
+}
+
+.box-chart h2 {
+    text-align: center;
+}
+
+#divisor {
+    border-bottom: 1px solid #222222;
+    padding: 5% 0 0 0;
 }
