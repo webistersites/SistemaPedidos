@@ -177,7 +177,6 @@ order by 2 desc;");
     </div>
 
 
-
     <!--
     <a href="valida_permissao.php" class="button">Cadastrar Franqueado</a>
     <a href="cadastro_prod.php" class="button">Cadastrar Produto</a>

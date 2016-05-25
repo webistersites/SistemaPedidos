@@ -19,8 +19,10 @@ $result = mysql_query($criarTabela);
 
 $query = mysql_query("select a.id_pedido,
 a.descricao,
-a.quantidade,
+b.valor_caixa,
+b.valor_unit,
 b.valor_venda,
+a.quantidade,
 b.valor_venda*a.quantidade as TOTAL
 FROM pedido_".$_SESSION['usuarioNome']." a
 INNER JOIN
@@ -43,12 +45,24 @@ ON
 <body id="body">
 <div class="interface">
 	<?php
-        require "menu.php";
-    ?>
+        //require "menu.php";
 
+    ?>
+    <div id="greetings">
+        <?php
+        echo "Olá " . $_SESSION['usuarioNome'] . ", &nbsp;&nbsp;<a href='logout.php'>sair</a><br>";
+        ?>
+    </div>
+    <br>
+
+    <a href="ult_ped.php" class="btn btn-default">Último pedido</a>
+    <br>
+
+<h1>Selecione o Produto</h1>
+    <br>
 		<form class="form-inline" name="produto" method="post" action="insere_pedido.php">
                 <div class="form-group">
-                    <label for="descricao" class="control-label col-sm-2">Selecione</label>
+                    <label for="descricao" class="control-label col-sm-2">Produto</label>
                     <div class="col-sm-1">
                         <select name="produto" class="form-control dropdown">
                             <option>Selecione...</option>
@@ -75,6 +89,9 @@ ON
                 <div class="form-group">
                     <button type="submit" name="submit" class="btn btn-info">Selecionar</button>
                 </div>
+            <div class="form-group">
+                <a href="enviar_pedido.php" class="btn btn-success">Finalizar Pedido</a>
+            </div>
 		 </form>
 
     <div id="divisor">
@@ -87,13 +104,15 @@ ON
 
     <br><br>
 <h1>Pedido</h1>
-
+<br>
 <table class="table table-bordered table-striped table-hover">
 	<tr>
 		<th>ID</th>
 		<th>Nome</th>
+        <th>R$ Caixa</th>
+        <th>R$ Unidade</th>
+        <th>R$ Venda</th>
 		<th>Quantidade</th>
-		<th>Valor Venda</th>
 		<th>TOTAL</th>
 		<th>Ação</th>
 	</tr>
@@ -104,17 +123,21 @@ while($ver=mysql_fetch_array($query)){
 	echo "<tr>";
     echo "<td>".$ver['id_pedido']."</td>";
     echo "<td>".$ver['descricao']."</td>";
-    echo "<td>".$ver['quantidade']."</td>";
+    echo "<td>".$ver['valor_caixa']."</td>";
+    echo "<td>".$ver['valor_unit']."</td>";
     echo "<td>".$ver['valor_venda']."</td>";
+    echo "<td>".$ver['quantidade']."</td>";
     echo "<td>".$ver['TOTAL']."</td>";
     echo "<td><a class='btn btn-danger btn-xs' href='deletar.php?id=".$ver['id_pedido']."'>Excluir</a></td>";
     echo "</tr>";
 }
 ?>
 </table>
-
-<a href="deletar_pedido.php" class="btn btn-default">Limpar Lista</a>
-<a href="enviar_pedido.php" class="btn btn-success">Finalizar pedido</a>
+<br>
+    <a href="deletar_pedido.php" class="btn btn-default">Limpar Lista</a>
+    <br>
+    <br>
+    <br>
 
 </div>
 </body>

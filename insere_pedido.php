@@ -23,5 +23,5 @@ mysql_close($conexao);
 
 ?>
 
-<meta http-equiv="refresh" content="1;url=montar_pedido.php">
+<meta http-equiv="refresh" content="0.2;url=montar_pedido.php">
 

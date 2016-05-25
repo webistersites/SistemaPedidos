@@ -21,7 +21,7 @@
             <li class="amarelo">
                 <a href="#">Usuários</a>
                 <ul>
-                    <li><a href="#">Incluir</a></li>
+                    <li><a href="cadastro_franq.php">Incluir</a></li>
                     <li><a href="#">Permissões</a></li>
 
                 </ul>
